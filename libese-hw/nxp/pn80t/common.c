@@ -250,10 +250,10 @@ uint32_t nxp_pn80t_handle_interface_call(struct EseInterface *ese,
                                          uint32_t rx_len) {
   /* Catch proprietary, host-targeted calls FF XX 00 00 */
   const struct Pn80tPlatform *platform = ese->ops->opts;
-  static const uint32_t kCommandLength = 4;
-  static const uint8_t kResetCommand = 0x01;
-  static const uint8_t kGpioToggleCommand = 0xe0;
-  static const uint8_t kCooldownCommand = 0xe1;
+  #define kCommandLength 4
+  #define kResetCommand 0x01
+  #define kGpioToggleCommand 0xe0
+  #define kCooldownCommand 0xe1
   uint8_t buf[kCommandLength + 1];
   uint8_t ok[2] = {0x90, 0x00};
   struct NxpState *ns = NXP_PN80T_STATE(ese);
